@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="center">Edit Venue</h1>
+  <div class="row">
+    <div class="col s12 center">
+      <form method="post" action="/venues/<%= venue.id %>">
+        <input type="hidden" name="_method" value="patch">
+        <input type="text" name="venue[venueName]" placeholder="Venue Name" value="<%= venue.venueName %>">
+        <input type="text" name="venue[description]" placeholder="Description" value="<%= venue.description %>">
+        <input type="text" name="venue[location.region]" placeholder="Region" value="<%= venue.location.region %>">
+        <input type="text" name="venue[location.fullAddress.address1]" placeholder="Address Line 1" value="<%= venue.location.fullAddress.address1 %>">
+        <input type="text" name="venue[location.fullAddress.address2]" placeholder="Address Line 2" value="<%= venue.location.fullAddress.address2 %>">
+        <input type="text" name="venue[location.fullAddress.address3]" placeholder="Address Line 3" value="<%= venue.location.fullAddress.address3 %>">
+        <input type="text" name="venue[location.area]" placeholder="Area" value="<%= venue.location.area %>">
+        <input type="submit"class="btn" value="edit">
+      </form>
+    </div>
+  </div>
+</div>

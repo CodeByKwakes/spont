@@ -1,0 +1,17 @@
+.buttons {
+  margin: 0 auto;
+}
+
+.nav-header {
+  height: 60px;
+  line-height: 60px;
+  background-color: #404040;
+}
+
+.btn {
+  background-color: #404040;
+}
+
+.btn:hover {
+  background-color: #676767;
+}

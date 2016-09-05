@@ -1,0 +1,38 @@
+<div class="container">
+  <h1 class="center"><%= user.firstName %> <%= user.lastName %></h1><br>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="center">
+          <% if (user.gender == "Male") { %>
+            <img src="http://www.universalgymtn.com/wp-content/uploads/2015/07/staff.jpg" alt="<%= user.firstName %> <%= user.lastName %>" class="responsive-img">
+          <% } else { %>
+            <img src="http://www.ecoleoraliste.qc.ca/wp-content/uploads/2014/03/sm-placeholder-female.jpg" alt="<%= user.firstName %> <%= user.lastName %>" class="responsive-img">
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <ul class="collection">
+      <li class="collection-item"><%= user.gender %></li>
+      <li class="collection-item"><%= user.email %></li>
+      <li class="collection-item"><%= user.postcode %></li>
+    </ul>
+
+  <br><hr><br>
+
+  <div class="row">
+    <div class="col s4 center" >
+      <a href="/" class="center btn">Back</a>
+    </div>
+    <div class="col s4 center" >
+      <a href="/users/<%= user.id %>/edit"class="center btn">Edit</a>
+    </div>
+    <div class="col s4 center">
+      <form method="post" action="/users/<%= user.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <button class="center btn">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
