@@ -1,0 +1,29 @@
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>All Users</h1>
+    <p>A list of all user on spont</p>
+  </div>
+</div>
+
+<div class="row">
+  {{#each users}}
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <img src="http://www.universalgymtn.com/wp-content/uploads/2015/07/staff.jpg" alt="<%= user.firstName %> <%= user.lastName %>" class="responsive-img">
+      <div class="caption">
+        <h3>{{firstName}} {{lastName}}</h3>
+        <p>
+          <a href="/users/{{id}}" class="btn btn-primary" role="button">Button</a> 
+        </p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+{{!--  {{#if gender ("male")}}
+     <img src="http://www.universalgymtn.com/wp-content/uploads/2015/07/staff.jpg" alt="<%= user.firstName %> <%= user.lastName %>" class="responsive-img">
+   {{else}}
+     <img src="http://www.ecoleoraliste.qc.ca/wp-content/uploads/2014/03/sm-placeholder-female.jpg" alt="<%= user.firstName %> <%= user.lastName %>" class="responsive-img">
+   {{/if}} --}}
+

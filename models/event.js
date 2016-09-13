@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-// var Venue    = require('../models/venue');
+var Venue    = require('./venue');
 
 var Schema = mongoose.Schema;
 var eventSchema = new Schema({
-  venue: [{type: Schema.ObjectId, ref: 'Venue'}],
+  venue: {type: Schema.ObjectId, ref: 'Venue'},
   eventName: String,
   eventDate: Date,
   startTime: Number,
@@ -12,4 +12,5 @@ var eventSchema = new Schema({
   updatedAt: Date
 });
 
-module.exports = mongoose.model('Event', eventSchema);
+var Event = mongoose.model('Event', eventSchema);
+module.exports = Event;

@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
-// var Event    = require('../models/event');
+var Event    = require('./event');
 
 var Schema = mongoose.Schema;
 var venueSchema = new Schema({
-  // admin: { type: Schema.ObjectId, ref: 'User' },
   venueName: String,
   description: String,
   location: {
@@ -15,34 +14,10 @@ var venueSchema = new Schema({
     },
     area: String,
   },
-  events: [{type: Schema.ObjectId, ref: 'Event'}],
-/*  info: {
-    typeOfNight: [String],
-    typeOfVenue: [String],
-    doorChange: String,
-    budget: String,
-    minimumAge: Number,
-    dressCode: String,
-    music: [String],
-  },
-  hours: {
-    day: String,
-    openingTime: String,
-    closingTime: String,
-    notes: String,
-  },*/
-  /*menus: {
-    menu: [String],
-    food: {
-      name: String,
-      price: Number,
-    },
-    drinks: {
-      name: String,
-      price: Number,
-    },
-  },*/
-  // rating: String,
+  events: [{
+    type: Schema.ObjectId, 
+    ref: 'Event'
+  }],
   createdAt: Date,
   updatedAt: Date
 });
