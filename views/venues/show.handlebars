@@ -12,25 +12,54 @@
     <div class="col-md-12">
 
       <div class="thumbnail">
+
         <img class="img-responsive" src="https://static.designmynight.com/uploads/2016/08/Aviary-2-optimised.jpg" alt="{{venue.venueName}}">
         <div class="caption-full">
           {{!-- <h4 class="pull-right">{{venue.location.region}}</h4> --}}
           <h4>{{venue.location.area}} <small>{{venue.location.region}}</small>
           </h4>
-          <p>{{venue.description}}</p>
+          
         </div>
-          <div class="ratings">
-            {{!-- <p class="pull-right">3 reviews</p> --}}
-            <p>{{venue.location.fullAddress.address1}}</p>
-            <p>{{venue.location.fullAddress.address2}}</p>
-            <p>{{venue.location.fullAddress.address3}}</p>
-          </div>
+          
+          <div>
 
-          <div class="ratings">
-            {{#each venue.events}}
-            <p>{{eventName}}</p>
-            <p>{{eventDate}}</p>
-            {{/each}}
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active">
+              <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a>
+              </li>
+              <li role="presentation">
+                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Address</a>
+              </li>
+              <li role="presentation">
+                <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Events</a>
+              </li>
+              <li role="presentation">
+                <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="home">
+                <p>{{venue.description}}</p>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="profile">
+                <p>{{venue.location.fullAddress.address1}}</p>
+                <p>{{venue.location.fullAddress.address2}}</p>
+                <p>{{venue.location.fullAddress.address3}}</p>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="messages">
+                {{#each venue.events}}
+                <p>{{eventName}}</p>
+                <p>{{eventDate}}</p>
+                {{/each}}
+              </div>
+              <div role="tabpanel" class="tab-pane" id="settings">
+                
+              </div>
+            </div>
+
           </div>
 
         </div>

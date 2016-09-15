@@ -49,14 +49,26 @@ function eventsNew(req, res){
 
 // EDIT
 function eventsEdit(req, res){
-  res.render('events/edit');
+  var id = req.params.id;
+
+  Event.findById({ _id: id }, function (err, event) {
+    if (err) return res.render('error', { message: 'Something went wrong.' });
+    res.render('events/edit', { event: event });
+  });
 }
 
 // UPDATE
 function eventsUpdate(req, res){
   var id = req.params.id;
   var eventParams = req.body.event;
+
   Event
+    .findByIdAndUpdate({ _id: id }, eventParams, function(err, event){
+      if (err) return res.render('error', { message: 'Something went wrong.' + err });
+    res.redirect('/events/' +id);
+  });
+
+  /*Event
     .findByIdAndUpdate({ _id: id}, eventParams, function(err, event){
       if (err) return res.status(500).json({ message: 'Something went wrong!!'});
       if (!event) return res.status(404).json({ message: 'No event found???'});
@@ -66,8 +78,8 @@ function eventsUpdate(req, res){
         res.status(201).json({ message: 'Event Updated.', event: event});
       });
 
-      res.redirect('/events/'+ id);
-    });
+      res.redirect('/');
+    });*/
 }
 
 // DELETE

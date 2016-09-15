@@ -14,31 +14,18 @@
       <div class="thumbnail">
         <img class="img-responsive" src="https://static.designmynight.com/uploads/2016/08/Aviary-2-optimised.jpg" alt="">
         <div class="caption-full">
-          <h4 class="pull-right">{{event.startTime}} - {{event.endTime}}</h4>
+          <h4 class="pull-right">
+          
+           {{event.startTime}} - {{event.endTime}}</h4>
           <h4>
-            <a href="#">{{event.eventDate}}</a>
+            <a href="#">
+              <span id="displayValue" value="{{event.eventDate}}"></span>
+            </a>
           </h4>
-          {{#each event.venue}}
-          <h4>
-            {{venueName}}
-          </h4>
-          {{/each}}
-          <p></p>
-          <p></p>
-          <p></p>
+          
         </div>
-          {{!-- <div class="ratings">
-            <p class="pull-right">3 reviews</p>
-            <p>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star-empty"></span>
-              4.0 stars
-            </p>
-          </div> --}}
-        </div>
+          
+      </div>
 
         <div class="well">
 

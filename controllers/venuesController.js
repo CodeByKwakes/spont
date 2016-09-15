@@ -48,13 +48,26 @@ function venuesNew(req, res){
 }
 // EDIT
 function venuesEdit(req, res){
-  res.render('venues/edit');
+  var id = req.params.id;
+
+  Venue.findById({ _id: id }, function (err, venue) {
+    if (err) return res.render('error', { message: 'Something went wrong.' });
+    res.render('venues/edit', { venue: venue });
+  });
 }
+
 // UPDATE
 function venuesUpdate(req, res){
   var id = req.params.id;
   var venueParams = req.body.venue;
+
   Venue
+    .findByIdAndUpdate({ _id: id }, venueParams, function(err, venue){
+      if (err) return res.render('error', { message: 'Something went wrong.' + err });
+    res.redirect('/events/' +id);
+  });
+
+/*  Venue
     .findByIdAndUpdate({ _id: id}, venueParams, function(err, venue){
       if (err) return res.status(500).json({ message: 'Something went wrong!!'});
       if (!venue) return res.status(404).json({ message: 'No venue found???'});
@@ -64,8 +77,8 @@ function venuesUpdate(req, res){
         res.status(201).json({ message: 'Venue Updated.', venue: venue});
       });
 
-      res.redirect('/venues/'+ id);
-    });
+      res.redirect('/');
+    });*/
 }
 // DELETE
 function venuesDelete(req, res){

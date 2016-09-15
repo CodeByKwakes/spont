@@ -6,8 +6,8 @@ var eventSchema = new Schema({
   venue: {type: Schema.ObjectId, ref: 'Venue'},
   eventName: String,
   eventDate: Date,
-  startTime: Number,
-  endTime: Number,
+  startTime: String,
+  endTime: String,
   createdAt: Date,
   updatedAt: Date
 });
