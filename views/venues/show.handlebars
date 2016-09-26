@@ -34,9 +34,9 @@
               <li role="presentation">
                 <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Events</a>
               </li>
-              <li role="presentation">
+              {{!-- <li role="presentation">
                 <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
-              </li>
+              </li> --}}
             </ul>
 
             <!-- Tab panes -->
@@ -53,18 +53,17 @@
                 {{#each venue.events}}
                 <p>{{eventName}}</p>
                 <p>{{eventDate}}</p>
+                <p> {{startTime}} - {{endTime}}</p>
                 {{/each}}
               </div>
-              <div role="tabpanel" class="tab-pane" id="settings">
-                
-              </div>
+              {{!-- <div role="tabpanel" class="tab-pane" id="settings"></div> --}}
             </div>
 
           </div>
 
         </div>
 
-        <div class="well">
+        {{!-- <div class="well">
 
           <div class="text-right">
             <a class="btn btn-success">Leave a Review</a>
@@ -88,7 +87,7 @@
           <hr>
 
         </div>
-
+ --}}
       </div>
 
     </div>

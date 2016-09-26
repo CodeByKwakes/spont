@@ -36,7 +36,7 @@ app.use(methodOverride(function(req){
 
 app.use(express.static(__dirname + '/public'));
 app.use(mainRoutes);
-app.use(routes);
+app.use("/api", routes);
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs.create({

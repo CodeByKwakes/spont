@@ -2,52 +2,54 @@ var Venue = require('../models/venue');
 var Event = require('../models/event');
 
 // INDEX
-function venuesIndex(req, res){
+function venuesIndex(req, res) {
   Venue
     .find({})
     .populate(['events'])
-    .exec(function(err, venues){
-      if (err) return res.status(404).json({message: 'Something went wrong!!'});
-      res.render('venues/index', { venues: venues });
+    .exec(function (err, venues) {
+      if (err) return res.status(404).json({ message: 'Something went wrong!!' });
+      // res.render('venues/index', { venues: venues });
+      res.status(200).json({ venues: venues });
     });
 }
 
 // CREATE
-function venuesCreate(req, res){
+function venuesCreate(req, res) {
   var venue = new Venue(req.body);
 
-  venue.save(function(err, venue){
-    if (err) return res.status(500).json({ message: 'Something went wrong!!'});
+  venue.save(function (err, venue) {
+    if (err) return res.status(500).json({ message: 'Something went wrong!!' });
 
     Event
-      .findOne({ _id: req.body.venue_id}, function(err, venue){
+      .findOne({ _id: req.body.venue_id }, function (err, venue) {
         event.venue.push(venue);
         event.save();
       });
-
-    return res.redirect('/');
+    // return res.redirect('/');
+    res.status(201).json({ message: 'A New Venue has been successfully created.', venue: venue })
   });
 }
 
 // SHOW
-function venuesShow(req, res){
+function venuesShow(req, res) {
   var id = req.params.id;
 
   Venue
     .findById(id)
     .populate(['events'])
-    .exec(function(err, venue){
-      if (err) return res.status(404).json({ message: 'Something went wrong!!'});
-      res.render('venues/show', { venue: venue });
+    .exec(function (err, venue) {
+      if (err) return res.status(404).json({ message: 'Something went wrong!!' });
+      // res.render('venues/show', { venue: venue });
+      res.status(200).json({ venue: venue});
     });
 }
 
 // NEW
-function venuesNew(req, res){
+function venuesNew(req, res) {
   res.render('venues/new');
 }
 // EDIT
-function venuesEdit(req, res){
+function venuesEdit(req, res) {
   var id = req.params.id;
 
   Venue.findById({ _id: id }, function (err, venue) {
@@ -57,45 +59,48 @@ function venuesEdit(req, res){
 }
 
 // UPDATE
-function venuesUpdate(req, res){
+function venuesUpdate(req, res) {
   var id = req.params.id;
   var venueParams = req.body.venue;
 
   Venue
-    .findByIdAndUpdate({ _id: id }, venueParams, function(err, venue){
+    .findByIdAndUpdate({ _id: id }, venueParams, function (err, venue) {
       if (err) return res.render('error', { message: 'Something went wrong.' + err });
-    res.redirect('/events/' +id);
-  });
+      // res.redirect('/events/' + id);
+      res.status(201).json({ message: 'Venue Updated', venue: venue});
+    });
 
-/*  Venue
-    .findByIdAndUpdate({ _id: id}, venueParams, function(err, venue){
-      if (err) return res.status(500).json({ message: 'Something went wrong!!'});
-      if (!venue) return res.status(404).json({ message: 'No venue found???'});
-
-      venue.save(function(err){
+  /*  Venue
+      .findByIdAndUpdate({ _id: id}, venueParams, function(err, venue){
         if (err) return res.status(500).json({ message: 'Something went wrong!!'});
-        res.status(201).json({ message: 'Venue Updated.', venue: venue});
-      });
-
-      res.redirect('/');
-    });*/
+        if (!venue) return res.status(404).json({ message: 'No venue found???'});
+  
+        venue.save(function(err){
+          if (err) return res.status(500).json({ message: 'Something went wrong!!'});
+          res.status(201).json({ message: 'Venue Updated.', venue: venue});
+        });
+  
+        res.redirect('/');
+      });*/
 }
+
 // DELETE
-function venuesDelete(req, res){
+function venuesDelete(req, res) {
   var id = req.params.id;
   Venue
-    .findByIdAndRemove({_id: id}, function(err){
-      if (err) return res.status(404).json({ message: 'Something went wrong!!'});
-      res.redirect('/');
+    .findByIdAndRemove({ _id: id }, function (err) {
+      if (err) return res.status(404).json({ message: 'Something went wrong!!' });
+      // res.redirect('/');
+      res.status(200).json({ message: 'Venue has been successfully deleted'});
     });
 }
 
 module.exports = {
-  venuesIndex  : venuesIndex,
-  venuesShow   : venuesShow,
-  venuesCreate : venuesCreate,
-  venuesUpdate : venuesUpdate,
-  venuesDelete : venuesDelete,
-  venuesNew    : venuesNew,
-  venuesEdit   : venuesEdit
+  venuesIndex: venuesIndex,
+  venuesShow: venuesShow,
+  venuesCreate: venuesCreate,
+  venuesUpdate: venuesUpdate,
+  venuesDelete: venuesDelete,
+  venuesNew: venuesNew,
+  venuesEdit: venuesEdit
 };

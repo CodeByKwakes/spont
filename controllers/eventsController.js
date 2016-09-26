@@ -8,7 +8,8 @@ function eventsIndex(req, res){
     .populate('venue')
     .exec(function(err, events){
       if (err) return res.status(404).json({message: 'Something went wrong!!'});
-      res.render('events/index', { events: events });
+      // res.render('events/index', { events: events });
+      res.status(200).json({events: events});
     });
 }
 
@@ -24,8 +25,8 @@ function eventsCreate(req, res){
         venue.events.push(event);
         venue.save();
       });
-
-    return res.redirect('/');
+    // return res.redirect('/');
+    res.status(201).json({ message: 'A New Event has been successfully created.', event: event})
   });
 }
 
@@ -38,7 +39,8 @@ function eventsShow(req, res){
     .populate('venue')
     .exec(function(err, event){
       if (err) return res.status(404).json({ message: 'Something went wrong!!'});
-      res.render('events/show', { event: event });
+      // res.render('events/show', { event: event });
+      res.status(200).json({ event: event});
     });
 }
 
@@ -65,7 +67,8 @@ function eventsUpdate(req, res){
   Event
     .findByIdAndUpdate({ _id: id }, eventParams, function(err, event){
       if (err) return res.render('error', { message: 'Something went wrong.' + err });
-    res.redirect('/events/' +id);
+    // res.redirect('/events/' +id);
+    res.status(201).json({ message: 'Event Updated', event: event})
   });
 
   /*Event
@@ -88,7 +91,8 @@ function eventsDelete(req, res){
   Event
     .findByIdAndRemove({_id: id}, function(err){
       if (err) return res.status(404).json({ message: 'Something went wrong!!'});
-      res.redirect('/');
+      // res.redirect('/');
+      res.status(200).json({ message: 'Event has been successfully deleted'});
     });
 }
 
