@@ -31,16 +31,16 @@ router.route('/events')
   .get(eventsController.eventsIndex)
   .post(eventsController.eventsCreate);
 
-router.route('/events/new')
-  .get(eventsController.eventsNew);
+// router.route('/events/new')
+//   .get(eventsController.eventsNew);
 
 router.route('/events/:id')
   .get(eventsController.eventsShow)
   .patch(eventsController.eventsUpdate)
   .delete(eventsController.eventsDelete);
 
-router.route('/events/:id/edit')
-  .get(eventsController.eventsEdit);
+// router.route('/events/:id/edit')
+//   .get(eventsController.eventsEdit);
 
 // Venue Routes
 router.route('/venues')

@@ -3,7 +3,7 @@ var User = require('../models/user');
 function usersIndex (req, res) {
 
   User
-    .find(function(err, users){
+    .find({}, function(err, users){
       /*if (err) return res.render('error', { message: 'Something went wrong.' });
       res.render('users/index', { users: users });*/
       if (err) return res.status(404).json({message: 'Something went wrong!!'});
@@ -24,10 +24,10 @@ function usersShow (req, res) {
 }
 
 function usersCreate (req, res) {
-  var userParams = req.body.user;
-  var user = new User(userParams);
+  // var userParams = req.body;
+  var user = new User(req.body);
 
-  user.save (function(err) {
+  user.save (function(err, user) {
     // if (err) return res.render('error', { message: err });
     if (err) return res.status(500).json({ message: 'Something went wrong!!'});
     // return res.redirect('/');

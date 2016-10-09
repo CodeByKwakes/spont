@@ -8,8 +8,8 @@ var eventSchema = new Schema({
   eventDate: Date,
   startTime: String,
   endTime: String,
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 });
 
 var Event = mongoose.model('Event', eventSchema);
