@@ -47,15 +47,15 @@ router.route('/venues')
   .get(venuesController.venuesIndex)
   .post(venuesController.venuesCreate);
 
-router.route('/venues/new')
-  .get(venuesController.venuesNew);
+// router.route('/venues/new')
+//   .get(venuesController.venuesNew);
 
 router.route('/venues/:id')
   .get(venuesController.venuesShow)
   .patch(venuesController.venuesUpdate)
   .delete(venuesController.venuesDelete);
 
-router.route('/venues/:id/edit')
-  .get(venuesController.venuesEdit);
+// router.route('/venues/:id/edit')
+//   .get(venuesController.venuesEdit);
 
 module.exports = router;
