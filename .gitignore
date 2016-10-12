@@ -1,27 +1,13 @@
-# OS X
-.DS_Store*
-Icon?
-._*
-​
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-​
-# Linux
-.directory
-*~
-​
-​
-# npm
+.DS_Store
 node_modules
-*.log
-*.gz
-​
-​
-# Coveralls
+public
+.tmp
+.idea
+.log
+dist
+docs
+.env
+npm-debug.log
+.nyc_output
 coverage
-​
-# Benchmarking
-benchmarks/graphs
-​
+cassettes
